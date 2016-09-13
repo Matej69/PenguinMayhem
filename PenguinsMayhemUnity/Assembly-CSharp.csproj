@@ -55,6 +55,7 @@
      <Compile Include="Assets\Scripts\GlobalSettings\SoundManager.cs" />
      <Compile Include="Assets\Scripts\GlobalSettings\VideoManager.cs" />
      <Compile Include="Assets\Scripts\Input\InputManager.cs" />
+     <Compile Include="Assets\Scripts\MapScripts\EntityInfo.cs" />
      <Compile Include="Assets\Scripts\MapScripts\MapEditor.cs" />
      <Compile Include="Assets\Scripts\Screen\Screen.cs" />
      <Compile Include="Assets\Scripts\Screen\ScreenEditor.cs" />

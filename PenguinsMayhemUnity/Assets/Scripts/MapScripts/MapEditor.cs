@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class MapEditor : MonoBehaviour {
 
-    private List<GameObject> platforms = new List<GameObject>();
+    private List<GameObject> tileObjects = new List<GameObject>();
     
     public int cellSize = 32;
     public GameObject highlightedCell;
@@ -20,9 +20,10 @@ public class MapEditor : MonoBehaviour {
 	void Update () {
         SetSelectedTilePos();
         if (InputManager.keyHold[KeyCode.Mouse0])
-            PlacePlatform();
-        if (InputManager.keyHold[KeyCode.Mouse1])
-            RemovePlatform();
+            PlaceTile();
+        if (InputManager.keyHold[KeyCode.Mouse1])        
+            RemoveTile();
+        
 
     }
 
@@ -53,21 +54,21 @@ public class MapEditor : MonoBehaviour {
         }
         finalCellPos.y = (Mathf.Abs(mousePos.y / minY) < Mathf.Abs(mousePos.y / maxY)) ? (minY) : (maxY);        
 
-        highlightedCell.transform.position = finalCellPos;        
+        highlightedCell.transform.position = finalCellPos;             
     }
 
     //PLATFORM PLACEMENT/REMOVAL::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::    
-    void PlacePlatform()
+    void PlaceTile()
     {
         //check if platform on targeted position already exists
         Vector2 posiblePos = highlightedCell.transform.position;
-        foreach (GameObject plat in platforms)
+        foreach (GameObject tileObj in tileObjects)
         {
-            Vector2 targetPos = plat.transform.position;
+            Vector2 targetPos = tileObj.transform.position;
             if (targetPos.x == posiblePos.x && targetPos.y == posiblePos.y)
             {
-                plat.GetComponent<SpriteRenderer>().sprite = GUIEditor.selectedSprite;
-                plat.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1);
+                tileObj.GetComponent<SpriteRenderer>().sprite = GUIEditor.selectedSprite;
+                tileObj.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1);
                 return;
             }
         }        
@@ -78,25 +79,26 @@ public class MapEditor : MonoBehaviour {
             obj.GetComponent<SpriteRenderer>().sprite = GUIEditor.selectedSprite;
             obj.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1);
         }
-        platforms.Add(obj);        
+
+        tileObjects.Add(obj);
+        EntityInfo.PrintObjectInfo(obj);
     }
-    void RemovePlatform()
+    void RemoveTile()
     {
         Vector2 posiblePos = highlightedCell.transform.position;
-        foreach(GameObject plat in platforms)
+        foreach(GameObject tileObj in tileObjects)
         {
-            Vector2 targetPos = plat.transform.position;
+            Vector2 targetPos = tileObj.transform.position;
             if (targetPos.x == posiblePos.x && targetPos.y == posiblePos.y)
             {
-                Destroy(plat);
-                platforms.Remove(plat);
+                Destroy(tileObj);
+                tileObjects.Remove(tileObj);
                 return;
             }
-        }
-
-
-       
+        }       
     }
+    
+
 
 
 }
