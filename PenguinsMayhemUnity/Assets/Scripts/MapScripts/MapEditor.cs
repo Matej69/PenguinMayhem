@@ -3,8 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class MapEditor : MonoBehaviour {
-
-    private List<GameObject> tileObjects = new List<GameObject>();
+    
+    private LevelMap map = new LevelMap(); 
     
     public int cellSize = 32;
     public GameObject highlightedCell;
@@ -14,6 +14,10 @@ public class MapEditor : MonoBehaviour {
     void Start () {
         highlightedCell = (GameObject)Instantiate(highlightedCell);
         cellWorldSize = highlightedCell.GetComponent<SpriteRenderer>().sprite.bounds.size.x;
+
+        LevelMap mapp = new LevelMap();
+        mapp.name = "MAPA"; mapp.mapObjects.Add((GameObject)Instantiate(Resources.Load(FilePaths.platformTempObj)));
+        MapParser.SaveLevelMapToJSON(mapp);
     }
 	
 	// Update is called once per frame
@@ -62,7 +66,7 @@ public class MapEditor : MonoBehaviour {
     {
         //check if platform on targeted position already exists
         Vector2 posiblePos = highlightedCell.transform.position;
-        foreach (GameObject tileObj in tileObjects)
+        foreach (GameObject tileObj in map.mapObjects)
         {
             Vector2 targetPos = tileObj.transform.position;
             if (targetPos.x == posiblePos.x && targetPos.y == posiblePos.y)
@@ -79,20 +83,19 @@ public class MapEditor : MonoBehaviour {
             obj.GetComponent<SpriteRenderer>().sprite = GUIEditor.selectedSprite;
             obj.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1);
         }
-
-        tileObjects.Add(obj);
+        map.mapObjects.Add(obj);
         EntityInfo.PrintObjectInfo(obj);
     }
     void RemoveTile()
     {
         Vector2 posiblePos = highlightedCell.transform.position;
-        foreach(GameObject tileObj in tileObjects)
+        foreach(GameObject tileObj in map.mapObjects)
         {
             Vector2 targetPos = tileObj.transform.position;
             if (targetPos.x == posiblePos.x && targetPos.y == posiblePos.y)
             {
                 Destroy(tileObj);
-                tileObjects.Remove(tileObj);
+                map.mapObjects.Remove(tileObj);
                 return;
             }
         }       
