@@ -15,6 +15,19 @@ public static class MapParser {
        // File.WriteAllText(FilePaths.jsonMaps, fileJsonData.ToString());
         
 
+    public static List<LevelMap> GetAllLevelMapsFromJSON()
+    {
+        List<LevelMap> levelMaps = new List<LevelMap>();
+        string fileTextString = File.ReadAllText(FilePaths.jsonMaps);
+        JsonData jsonData = JsonMapper.ToObject(fileTextString);
+
+        List<string> mapNames = MapParser.GetMapNamesFromJSON();
+        for(int n = 0; n < mapNames.Count; ++n) {
+            levelMaps.Add(MapParser.GetLevelMapFromJSON(mapNames[n]));
+        }
+        return levelMaps;
+    }
+   
    public static LevelMap GetLevelMapFromJSON(string mapName)
     {
         LevelMap map = new LevelMap();
@@ -44,36 +57,69 @@ public static class MapParser {
         return null;
     }
 
-    public static void SaveLevelMapToJSON(LevelMap levelMap)
-    {
-        //*****************************load all previous json as text
-        //*****************************add new map at the end
-        //*****************************save
+    public static LevelMap GetRandomMap()
+    {        
+        List<string> names = MapParser.GetMapNamesFromJSON();
+        int randNum = UnityEngine.Random.Range(0, names.Count);
+        Debug.Log(randNum + "/" + names.Count);
+        LevelMap map = MapParser.GetLevelMapFromJSON(names[randNum]);
+        return map;
+    }
 
+    public static List<string> GetMapNamesFromJSON()
+    {
+        List<string> mapNames = new List<string>();
+
+        string fileTextString = File.ReadAllText(FilePaths.jsonMaps);
+        JsonData jsonData = JsonMapper.ToObject(fileTextString);
+        for(int i = 0; i < jsonData["maps"].Count; ++i) {
+            mapNames.Add(jsonData["maps"][i]["name"].ToString());
+        }
+        return mapNames;
+    }
+    
+    public static void SaveLevelMapsToJSON(List<LevelMap> levelMap)
+    {
         //JsonData jsonData = JsonMapper.ToJson(map);
-        string finalJsonText;
+        string finalJsonText = "";
         string jsonStartText = @"{  ""maps"":[ ";
         string jsonEndText = "]  }";
 
-        finalJsonText = "" + jsonStartText;
-        //extract information from map for json 
-        finalJsonText += @"{  ""name"":"""+levelMap.name+@""",";
-        finalJsonText += @"  ""tiles"":[ ";
-        for (int i = 0; i < levelMap.mapObjects.Count; ++i) {
-            GameObject currObj = levelMap.mapObjects[i];
+        //start tag*******        
+        finalJsonText += jsonStartText;
 
-            finalJsonText +=
-                @"{""x"":"+ currObj.transform.position.x.ToString() + ","+
-                @"""y"":" + currObj.transform.position.y.ToString() + "," +
-                @"""spriteID"":" + ResourceReader.GetSpriteIDFromGameObject(currObj).ToString() + "}";
+        //info about all items from LevelMap list********
+        //for every map in list
+        for (int mapID = 0; mapID < levelMap.Count; ++mapID)
+        {
+            finalJsonText += Environment.NewLine;
+            finalJsonText += @"{  ""name"":""" + levelMap[mapID].name + @""",";
+            finalJsonText += @"  ""tiles"":[ ";
+            //for every tile item in tiles
+            for (int i = 0; i < levelMap[mapID].mapObjects.Count; ++i)
+            {
+                GameObject currObj = levelMap[mapID].mapObjects[i];
 
-            if (i != levelMap.mapObjects.Count - 1) { 
-                finalJsonText += ", ";
+                finalJsonText +=
+                    @"{""x"":" + currObj.transform.position.x.ToString() + "," +
+                    @"""y"":" + currObj.transform.position.y.ToString() + "," +
+                    @"""spriteID"":" + ResourceReader.GetSpriteIDFromGameObject(currObj).ToString() + "}";
+                //special case for last tile item
+                if (i != levelMap[mapID].mapObjects.Count - 1) {
+                    finalJsonText += ", ";
+                }else {
+                    finalJsonText += " ]  }";
+                }
             }
-            else {
-                finalJsonText += " ]  }";
+            //special case for last map item
+            if (mapID != levelMap.Count - 1) {
+                    finalJsonText += ", ";
+            }else {
+                finalJsonText += "";
             }
         }
+
+        //end tag
         finalJsonText += "]  }";
         
         File.WriteAllText(FilePaths.jsonMaps, finalJsonText);

@@ -23,6 +23,8 @@ public class ScreenEditor : Screen
         screenType = ScreenType.EDITOR;
         toolsMenu = MonoBehaviour.Instantiate(Resources.Load(FilePaths.canvasEditor), new Vector2(0, 0), Quaternion.identity) as GameObject;
         mapEditor = MonoBehaviour.Instantiate(Resources.Load(FilePaths.mapEditor), new Vector2(0, 0), Quaternion.identity) as GameObject;
+
+        Profile.s_profiles.Add(new Profile());
     }
 
 

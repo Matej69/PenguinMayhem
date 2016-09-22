@@ -4,7 +4,8 @@ using System.Collections.Generic;
 
 public class MapEditor : MonoBehaviour {
     
-    private LevelMap map = new LevelMap(); 
+    [HideInInspector]
+    public LevelMap map = new LevelMap(); 
     
     public int cellSize = 32;
     public GameObject highlightedCell;
@@ -14,18 +15,16 @@ public class MapEditor : MonoBehaviour {
     void Start () {
         highlightedCell = (GameObject)Instantiate(highlightedCell);
         cellWorldSize = highlightedCell.GetComponent<SpriteRenderer>().sprite.bounds.size.x;
+                
 
-        LevelMap mapp = new LevelMap();
-        mapp.name = "MAPA"; mapp.mapObjects.Add((GameObject)Instantiate(Resources.Load(FilePaths.platformTempObj)));
-        MapParser.SaveLevelMapToJSON(mapp);
     }
 	
 	// Update is called once per frame
 	void Update () {
         SetSelectedTilePos();
-        if (InputManager.keyHold[KeyCode.Mouse0])
+        if (InputManager.keyHold[KeyCode.Mouse0] && map != null)
             PlaceTile();
-        if (InputManager.keyHold[KeyCode.Mouse1])        
+        if (InputManager.keyHold[KeyCode.Mouse1] && map != null)        
             RemoveTile();
         
 
@@ -64,6 +63,9 @@ public class MapEditor : MonoBehaviour {
     //PLATFORM PLACEMENT/REMOVAL::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::    
     void PlaceTile()
     {
+        if (GUIEditor.selectedSprite == null)
+            return;
+
         //check if platform on targeted position already exists
         Vector2 posiblePos = highlightedCell.transform.position;
         foreach (GameObject tileObj in map.mapObjects)
@@ -78,11 +80,10 @@ public class MapEditor : MonoBehaviour {
         }        
         //create object and set sprite
         GameObject obj = Instantiate(highlightedCell);
-        if (GUIEditor.selectedSprite != null)
-        {
+        if (GUIEditor.selectedSprite != null) {
             obj.GetComponent<SpriteRenderer>().sprite = GUIEditor.selectedSprite;
             obj.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1);
-        }
+        }        
         map.mapObjects.Add(obj);
         EntityInfo.PrintObjectInfo(obj);
     }

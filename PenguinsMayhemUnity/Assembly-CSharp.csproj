@@ -45,11 +45,13 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\CharacterScripts\CharacterController.cs" />
      <Compile Include="Assets\Scripts\GUI\GUIEditor.cs" />
      <Compile Include="Assets\Scripts\GUI\GUIGameEnd.cs" />
      <Compile Include="Assets\Scripts\GUI\GUIManager.cs" />
      <Compile Include="Assets\Scripts\GUI\GUIMenu.cs" />
      <Compile Include="Assets\Scripts\GUI\GUIOptions.cs" />
+     <Compile Include="Assets\Scripts\GameSettings.cs" />
      <Compile Include="Assets\Scripts\GlobalSettings\FilePaths.cs" />
      <Compile Include="Assets\Scripts\GlobalSettings\ResourceReader.cs" />
      <Compile Include="Assets\Scripts\GlobalSettings\SoundManager.cs" />
@@ -59,10 +61,15 @@
      <Compile Include="Assets\Scripts\MapScripts\EntityInfo.cs" />
      <Compile Include="Assets\Scripts\MapScripts\LevelMap.cs" />
      <Compile Include="Assets\Scripts\MapScripts\MapEditor.cs" />
+     <Compile Include="Assets\Scripts\Profile\CharacterAttributes.cs" />
+     <Compile Include="Assets\Scripts\Profile\Profile.cs" />
+     <Compile Include="Assets\Scripts\Profile\ProfileDesign.cs" />
      <Compile Include="Assets\Scripts\Screen\Screen.cs" />
      <Compile Include="Assets\Scripts\Screen\ScreenEditor.cs" />
+     <Compile Include="Assets\Scripts\Screen\ScreenGame.cs" />
      <Compile Include="Assets\Scripts\Screen\ScreenMain.cs" />
      <Compile Include="Assets\Scripts\Screen\ScreenManager.cs" />
+     <Compile Include="Assets\Scripts\Screen\ScreenProfileDesign.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

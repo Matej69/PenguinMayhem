@@ -48,9 +48,11 @@ public static class ResourceReader {
         Sprite sprite = obj.GetComponent<SpriteRenderer>().sprite;
         foreach(Dictionary<Sprite, int> dictionary in dictionarySpriteIDList)  {
             foreach (KeyValuePair<Sprite,int> pair in dictionary) {
-                Debug.Log("workz");
-                if (sprite.name != null && sprite.name == pair.Key.name)
+                if (sprite != null && sprite.name == pair.Key.name)
+                {
+                    Debug.Log(dictionary[sprite]);
                     return dictionary[sprite];
+                }
             }
         }
         return 707;
@@ -67,7 +69,21 @@ public static class ResourceReader {
             }
         }
         return null;
-    }    
+    }
+
+    //*******************************************************
+    //get all hat Sprites as SpriteList
+    //*******************************************************
+    public static List<Sprite> GetHatSprites()
+    {
+        Sprite[] hatsArray = Resources.LoadAll<Sprite>(FilePaths.spriteHat);
+        List<Sprite> hatsList = new List<Sprite>();
+        foreach (Sprite hat in hatsArray) {
+            hatsList.Add(hat);
+        }
+        return hatsList;
+    }
+
 
 
 }
