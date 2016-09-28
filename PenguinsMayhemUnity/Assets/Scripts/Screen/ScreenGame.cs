@@ -1,7 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 
+[InitializeOnLoad]
 public class ScreenGame : Screen {
 
     public int numOfRounds;
@@ -10,6 +12,9 @@ public class ScreenGame : Screen {
     List<GameObject> Characters = new List<GameObject>();
     LevelMap levelMap;
     List<GameObject> platforms = new List<GameObject>();
+    List<GameObject> playerSpawns = new List<GameObject>();
+    List<GameObject> weaponSpawns = new List<GameObject>();
+    GameObject camera;
 
 
     public ScreenGame(int _numOfRounds)
@@ -20,9 +25,13 @@ public class ScreenGame : Screen {
 
         //spawn map with already intantiated gameObjects
         levelMap = MapParser.GetRandomMap();
-        ExtractPlatformsFromAllGO();
+        ExtractSpecificFromAllGO();
         //chose where characters will spawn
         InitCharacters();
+        SetCharactersPosition();
+        //set camera position
+        SetCameraPosition();
+        
         
     }
 
@@ -45,18 +54,52 @@ public class ScreenGame : Screen {
         }        
     }
     
-    //************************SET UP PLATFORMS**************************
-    void ExtractPlatformsFromAllGO()
+    //************************SORT ALL OBJECT IN SOME CATEGORIES**************************
+    void ExtractSpecificFromAllGO()
     {
          foreach(GameObject obj in levelMap.mapObjects) {
-           // if (obj.GetComponent<SpriteRenderer>().sprite == null)
-           //     continue;
             Sprite objSprite = obj.GetComponent<SpriteRenderer>().sprite;
+            //platforms.....
             if (ResourceReader.platformSpriteMap.ContainsKey(objSprite)) {
                 obj.AddComponent<BoxCollider2D>();
+                obj.layer = 20;
                 platforms.Add(obj);
             }
+            //palyer spawn
+            else if (ResourceReader.itemSpriteMap.ContainsKey(objSprite))
+            {
+                if(objSprite.name == "cam") {
+                    camera = obj;
+                    Debug.Log("camera is here dude");
+                }
+                else if(objSprite.name == "player_spawn") {
+                    playerSpawns.Add(obj);
+                }
+                else if(objSprite.name == "weapon_spawn") {
+                    weaponSpawns.Add(obj);
+                }
+
+            }
+
         }      
+    }
+
+    void SetCharactersPosition(){        
+        foreach(GameObject player in Characters) {
+            int rand = Random.Range(0, playerSpawns.Count);
+            for (int i = 0; i < playerSpawns.Count; ++i) {
+                if (rand == i)
+                    player.transform.position = playerSpawns[i].transform.position;
+            }
+        }
+    }
+
+    void SetCameraPosition() {
+        if (camera != null)
+        {
+            Camera.main.transform.position = camera.transform.position;            
+            Debug.Log("FROM" + Camera.main.transform.position + " TO" + camera.transform.position);
+        }
     }
 
 

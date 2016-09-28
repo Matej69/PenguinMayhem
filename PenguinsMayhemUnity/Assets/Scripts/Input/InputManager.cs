@@ -17,11 +17,11 @@ public class InputManager : MonoBehaviour {
     void Awake () {
         SetAllKeysToFalse();        
     }
-	
+    
 	// Update is called once per frame
 	void Update () {
         mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        GetKeyInput();        
+        GetKeyInput();  
 
     }
 
@@ -50,7 +50,7 @@ public class InputManager : MonoBehaviour {
                 keyHold[key] = true;
                 keyPressed[key] = false;
             }
-            else if (Input.GetKeyUp(key) && keyHold[key])
+            if (Input.GetKeyUp(key) && keyHold[key] && !Input.GetKey(key))
             {
                 keyReleased[key] = true;
                 keyPressed[key] = false;

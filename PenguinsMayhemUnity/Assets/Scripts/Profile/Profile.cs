@@ -10,7 +10,9 @@ public class Profile {
     public enum keyType { LEFT,RIGHT,JUMP,SHOT,PICKUP };
     public Dictionary<keyType, KeyCode> keyConfigMap = new Dictionary<keyType, KeyCode>();
 
-    public string name;    
+    public string name;
+    public int score = 0;
+
     public GameObject character;
     public Sprite hatSprite = Resources.Load<Sprite>(FilePaths.spriteNohat);    //default sprite will be noHat sprite
     public bool isProfileReady = false;

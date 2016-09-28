@@ -45,6 +45,7 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Blood.cs" />
      <Compile Include="Assets\Scripts\CharacterScripts\CharacterController.cs" />
      <Compile Include="Assets\Scripts\GUI\GUIEditor.cs" />
      <Compile Include="Assets\Scripts\GUI\GUIGameEnd.cs" />
@@ -70,6 +71,11 @@
      <Compile Include="Assets\Scripts\Screen\ScreenMain.cs" />
      <Compile Include="Assets\Scripts\Screen\ScreenManager.cs" />
      <Compile Include="Assets\Scripts\Screen\ScreenProfileDesign.cs" />
+     <Compile Include="Assets\Scripts\Timer.cs" />
+     <Compile Include="Assets\Scripts\Weapon\Bullet.cs" />
+     <Compile Include="Assets\Scripts\Weapon\GunshotEffect.cs" />
+     <Compile Include="Assets\Scripts\Weapon\Weapon.cs" />
+     <Compile Include="Assets\Scripts\Weapon\WeaponInfo.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

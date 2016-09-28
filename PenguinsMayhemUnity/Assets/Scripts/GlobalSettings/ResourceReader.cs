@@ -1,15 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 
+[InitializeOnLoad]
 public static class ResourceReader {
 
-    private static int spriteID = 0;
-
-    //public static Sprite[] platformSprites = GetSprites(FilePaths.spritePlatform);
-    //public static Sprite[] entitySprites = GetSprites(FilePaths.spriteEntity);
-
-    //public static EntityInfo platformInfo = new EntityInfo()
+    private static int spriteID = 0;    
 
     public static List<Dictionary<Sprite, int>> dictionarySpriteIDList = new List<Dictionary<Sprite, int>>();
     public static Dictionary<Sprite, int> platformSpriteMap = GetSpritesFromFolder(FilePaths.spritePlatform);

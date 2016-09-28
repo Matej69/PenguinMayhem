@@ -17,6 +17,11 @@ public static class FilePaths
     public static string spriteBackground = "Sprite/Background";
     public static string spriteItem = "Sprite/Items";
     public static string spriteHat = "Sprite/Hats";
+    public static string spriteWeapon = "Sprite/Weapons/";
+    public static string spriteBullet = "Sprite/Bullets/";
+    public static string spriteShotEffect = "Sprite/ShotEffectAnim/";
+    public static string spriteBulletAnim = "Sprite/BulletAnim/";
+    public static string spriteBlood= "Sprite/Blood/";
 
     public static string spriteNohat = "Sprite/Hats/nohat";
     public static string spriteCam = "Sprite/Items/cam";

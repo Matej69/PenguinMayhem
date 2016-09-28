@@ -61,7 +61,6 @@ public static class MapParser {
     {        
         List<string> names = MapParser.GetMapNamesFromJSON();
         int randNum = UnityEngine.Random.Range(0, names.Count);
-        Debug.Log(randNum + "/" + names.Count);
         LevelMap map = MapParser.GetLevelMapFromJSON(names[randNum]);
         return map;
     }

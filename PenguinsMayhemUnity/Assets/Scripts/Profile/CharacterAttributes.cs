@@ -4,6 +4,7 @@ using System.Collections;
 public class CharacterAttributes : MonoBehaviour {
 
     //profile component will get asigned in 'Profile.class' after object creation 
+    public GameObject bloodPrefab;
     [HideInInspector]
     public Profile profilePointer;
     [HideInInspector]
@@ -22,8 +23,7 @@ public class CharacterAttributes : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
     }
-
-
+    
 
     
     //**************** SET HAT SPRITE *****************
@@ -31,5 +31,14 @@ public class CharacterAttributes : MonoBehaviour {
         Hat.GetComponent<SpriteRenderer>().sprite = _sprite;
     }
 
+    public void DestroyObject(int bloodDir)
+    {
+        //spawning blood object
+        GameObject bloodObj = (GameObject)Instantiate(bloodPrefab, transform.position, Quaternion.identity);
+        Vector2 bloodScale = bloodObj.transform.localScale;
+        bloodObj.transform.localScale = new Vector2((bloodDir) * Mathf.Abs(bloodScale.x), bloodScale.y);
+
+        Destroy(gameObject);
+    }
 
 }
