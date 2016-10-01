@@ -36,7 +36,6 @@ public class Weapon : MonoBehaviour {
 
         //changing weapon for testing purposes?*?*?*?*?*?*?*?
         if (InputManager.keyPressed[KeyCode.Alpha1]) {
-            Debug.Log("pressed");
             WeaponInfo.weaponType type = ++weaponInfo.type;
             if (type >= WeaponInfo.weaponType.SIZE) type = 0;
             SwitchToWeapon(type);            
@@ -45,7 +44,7 @@ public class Weapon : MonoBehaviour {
     }
 
 
-    void SwitchToWeapon(WeaponInfo.weaponType _weaponType)
+    public void SwitchToWeapon(WeaponInfo.weaponType _weaponType)
     {
         foreach (KeyValuePair<WeaponInfo.weaponType, WeaponInfo> pair in WeaponInfo.allWeaponInfos) {            
             if (pair.Key == _weaponType) {
@@ -76,7 +75,8 @@ public class Weapon : MonoBehaviour {
     public bool CanShoot() {
         return HaveAmmunition() && shotTimer.IsFinished();
     }
-    public void Shot() {        
+    public void Shot() {    
+        //instantiate X num of bullets    
         if (weaponInfo.type == WeaponInfo.weaponType.SHOTGUN) { 
             InstantiateBullet(); InstantiateBullet(); InstantiateBullet();
         }
@@ -87,6 +87,10 @@ public class Weapon : MonoBehaviour {
         GameObject shotEff = (GameObject)Instantiate(shotEffectPrefab, bulletSpawn.transform.position, Quaternion.identity);
         shotEff.GetComponent<GunshotEffect>().SetProperAnimation(weaponInfo);
         shotEff.GetComponent<GunshotEffect>().SetScaleXDir((int)Mathf.Sign(ownerCharacter.transform.localScale.x));
+
+        //if it is grenade, hide weapon sprite since it is throwable item
+        if (weaponInfo.type == WeaponInfo.weaponType.GRENADE)
+            weaponSpriteR.sprite = null;
 
         ApplyThrowback();
         weaponInfo.numOfBullets--;

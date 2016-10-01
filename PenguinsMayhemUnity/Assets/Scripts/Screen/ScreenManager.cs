@@ -12,8 +12,8 @@ public class ScreenManager : MonoBehaviour {
     }
 
     void Update () {
-        //update screen
-	}
+        Screen.screen.UpdateScreen();
+    }
     
 
 }

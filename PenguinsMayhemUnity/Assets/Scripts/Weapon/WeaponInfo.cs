@@ -6,7 +6,7 @@ using System.Collections.Generic;
 [InitializeOnLoad]
 public class WeaponInfo {
 
-    public enum weaponType { REVOLVER, AK47, SHOTGUN, SPACEPISTOL, UZI, SIZE };
+    public enum weaponType { REVOLVER, AK47, SHOTGUN, SPACEPISTOL, UZI, GRENADE, SIZE };
 
     //STATIC STUFF
     public static Dictionary<weaponType, WeaponInfo> allWeaponInfos = new Dictionary<weaponType, WeaponInfo>();   
@@ -16,6 +16,7 @@ public class WeaponInfo {
         allWeaponInfos[weaponType.SHOTGUN] = new WeaponInfo(weaponType.SHOTGUN, GetWeaponSprite("shotgun"), GetBulletSprite("shotgun_bullet"), null, 5, 0.5f, 0.04f, 0.2f);
         allWeaponInfos[weaponType.SPACEPISTOL] = new WeaponInfo(weaponType.SPACEPISTOL, GetWeaponSprite("spacepistol"), GetBulletSprite("spacepistol_bullet"), null, 5, 0.5f, 0.04f, 0.01f);
         allWeaponInfos[weaponType.UZI] = new WeaponInfo(weaponType.UZI, GetWeaponSprite("uzi"), GetBulletSprite("uzi_bullet"), null, 20, 0.05f, 0.04f, 0.08f);
+        allWeaponInfos[weaponType.GRENADE] = new WeaponInfo(weaponType.GRENADE, GetWeaponSprite("grenade"), GetWeaponSprite("grenade"), null, 1, 0.1f, 0.04f, 0.01f);
     }
 
     public static Sprite GetWeaponSprite(string weaponName) {

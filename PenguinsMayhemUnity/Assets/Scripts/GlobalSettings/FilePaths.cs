@@ -12,6 +12,7 @@ public static class FilePaths
     public static string canvasOptions = "GameObjects/Canvas/CanvasOptions";
     public static string canvasEditor = "GameObjects/Canvas/CanvasEditor";
     public static string canvasProfileChoice = "GameObjects/Canvas/CanvasProfileChoice";
+    public static string canvasScore = "GameObjects/Canvas/CanvasGameScrore";
     //sprite folders
     public static string spritePlatform = "Sprite/Platform";
     public static string spriteBackground = "Sprite/Background";
@@ -22,6 +23,7 @@ public static class FilePaths
     public static string spriteShotEffect = "Sprite/ShotEffectAnim/";
     public static string spriteBulletAnim = "Sprite/BulletAnim/";
     public static string spriteBlood= "Sprite/Blood/";
+    public static string spriteExplosion = "Sprite/Explosion/";
 
     public static string spriteNohat = "Sprite/Hats/nohat";
     public static string spriteCam = "Sprite/Items/cam";
@@ -35,9 +37,9 @@ public static class FilePaths
     public static string mapEditor = "GameObjects/HelpObjects/MapEditor";
     //JSON maps file
     public static string jsonMaps = Application.dataPath + "/Resources" + "/JSON" + "/maps.json";
-    //platform template object
+    //objects
     public static string platformTempObj = "GameObjects/Platform/platform";
-    //penguin character object
     public static string characterObj = "GameObjects/Entity/Character";
+    public static string objWeaponbox = "GameObjects/Weaponbox/weaponbox";
 
 }

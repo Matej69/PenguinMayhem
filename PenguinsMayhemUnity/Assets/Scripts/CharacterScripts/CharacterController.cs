@@ -7,6 +7,8 @@ public class CharacterController : MonoBehaviour {
     Weapon weaponScript;
     Bounds CollBounds;
 
+    Animator animator;
+
     int mask;
     float skin = 0.02f;
 
@@ -43,6 +45,7 @@ public class CharacterController : MonoBehaviour {
         profile = gameObject.GetComponent<CharacterAttributes>().profilePointer;
         weaponScript = transform.FindChild("Gun").gameObject.GetComponent<Weapon>();
         CollBounds = GetComponent<BoxCollider2D>().bounds;
+        animator = transform.FindChild("Penguin").gameObject.GetComponent<Animator>();
 
         mask = LayerMask.NameToLayer("Platform");
         velocity = new Vector2(0, 0);
@@ -60,6 +63,7 @@ public class CharacterController : MonoBehaviour {
         MoveBy(velocity);
         
 
+
     }
 
     void CalculateVelocityOnInput(){
@@ -68,15 +72,18 @@ public class CharacterController : MonoBehaviour {
             AddSpeedUntilMax();
             velocity = new Vector2(-1 * speedHoriz * Time.deltaTime, velocity.y);
             SetScaleDirX(-1);
+            animator.SetBool("isWalking", true);
         }
         else if (InputManager.keyHold[profile.keyConfigMap[Profile.keyType.RIGHT]]) {
             AddSpeedUntilMax();
             velocity = new Vector2(speedHoriz * Time.deltaTime, velocity.y);
             SetScaleDirX(1);
+            animator.SetBool("isWalking", true);            
         }
         else { 
             velocity = new Vector2(0, velocity.y);
             speedHoriz = 0;
+            animator.SetBool("isWalking", false);            
         }
         //VERTICAL MOVEMENT
         if (InputManager.keyHold[profile.keyConfigMap[Profile.keyType.JUMP]] && isGrounded && !jumpingInfo.isJumping && !IsFalling()){

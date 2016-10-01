@@ -26,8 +26,27 @@ public class MapEditor : MonoBehaviour {
             PlaceTile();
         if (InputManager.keyHold[KeyCode.Mouse1] && map != null)        
             RemoveTile();
-        
+        //moving camera
+        MoveCamOnInput();
 
+
+
+    }
+
+    //moving camera
+    void MoveCamOnInput()
+    {
+        float camSpeed = 0.15f;
+        Vector2 camPos = Camera.main.transform.position;
+        if (InputManager.keyHold[KeyCode.UpArrow])
+            camPos.y += camSpeed;
+        if (InputManager.keyHold[KeyCode.DownArrow])
+            camPos.y -= camSpeed;
+        if (InputManager.keyHold[KeyCode.LeftArrow])
+            camPos.x -= camSpeed;
+        if (InputManager.keyHold[KeyCode.RightArrow])
+            camPos.x += camSpeed;
+        Camera.main.transform.position = new Vector3(camPos.x,camPos.y,-10);
     }
 
     void SetSelectedTilePos()

@@ -38,4 +38,8 @@ public class ScreenEditor : Screen
     {
     }
 
+    public override void UpdateScreen()
+    {
+    }
+
 }

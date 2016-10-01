@@ -32,13 +32,15 @@ public abstract class Screen {
                 break;
             case ScreenType.CHARACTER_CHOICE:
                 {
-
-                }break;
+                    Screen.screen = new ScreenProfileDesign();
+                }
+                break;
             case ScreenType.GAME:
                 {
                     Screen screenToDestroyHolder = Screen.screen;
                     //if switching to game screen from profileDesign screen
                     if (Screen.screen.screenType == Screen.ScreenType.CHARACTER_CHOICE){
+                        Profile.RemoveUnreadyProfiles();
                         int numOfRounds = ((ScreenProfileDesign)(Screen.screen)).profileChoiceCanvas.transform.FindChild("GameSettings").GetComponent<GameSettings>().GetNumOfRoundsFromInput();                        
                         Screen.screen = new ScreenGame(numOfRounds);
                     }
@@ -49,7 +51,9 @@ public abstract class Screen {
 
         }
     }
-        
+
+    public abstract void UpdateScreen();
+
     public abstract void DestroyNonPassableResources ();
     public abstract void DestroyPassableResources ();
 }

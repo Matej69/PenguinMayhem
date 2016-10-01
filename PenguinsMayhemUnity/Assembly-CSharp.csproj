@@ -45,17 +45,20 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Blood.cs" />
+     <Compile Include="Assets\Scripts\Blood.cs" />
      <Compile Include="Assets\Scripts\CharacterScripts\CharacterController.cs" />
+     <Compile Include="Assets\Scripts\GUI\CanvasGameScore.cs" />
      <Compile Include="Assets\Scripts\GUI\GUIEditor.cs" />
      <Compile Include="Assets\Scripts\GUI\GUIGameEnd.cs" />
      <Compile Include="Assets\Scripts\GUI\GUIManager.cs" />
      <Compile Include="Assets\Scripts\GUI\GUIMenu.cs" />
      <Compile Include="Assets\Scripts\GUI\GUIOptions.cs" />
      <Compile Include="Assets\Scripts\GameSettings.cs" />
+     <Compile Include="Assets\Scripts\GlobalSettings\CameraScript.cs" />
      <Compile Include="Assets\Scripts\GlobalSettings\FilePaths.cs" />
      <Compile Include="Assets\Scripts\GlobalSettings\ResourceReader.cs" />
      <Compile Include="Assets\Scripts\GlobalSettings\SoundManager.cs" />
+     <Compile Include="Assets\Scripts\GlobalSettings\Timer.cs" />
      <Compile Include="Assets\Scripts\GlobalSettings\VideoManager.cs" />
      <Compile Include="Assets\Scripts\Input\InputManager.cs" />
      <Compile Include="Assets\Scripts\JSON\MapParser.cs" />
@@ -71,11 +74,12 @@
      <Compile Include="Assets\Scripts\Screen\ScreenMain.cs" />
      <Compile Include="Assets\Scripts\Screen\ScreenManager.cs" />
      <Compile Include="Assets\Scripts\Screen\ScreenProfileDesign.cs" />
-     <Compile Include="Assets\Scripts\Timer.cs" />
      <Compile Include="Assets\Scripts\Weapon\Bullet.cs" />
+     <Compile Include="Assets\Scripts\Weapon\Explosion.cs" />
      <Compile Include="Assets\Scripts\Weapon\GunshotEffect.cs" />
      <Compile Include="Assets\Scripts\Weapon\Weapon.cs" />
      <Compile Include="Assets\Scripts\Weapon\WeaponInfo.cs" />
+     <Compile Include="Assets\Scripts\Weaponbox.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

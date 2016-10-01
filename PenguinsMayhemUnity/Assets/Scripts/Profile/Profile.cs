@@ -38,8 +38,14 @@ public class Profile {
             name = "HotDonkey69";
     }
 
-    public static void ClearProfileList(ref List<Profile> profiles) {
-        profiles.Clear();
+
+    public static void ClearProfileList(/*ref List<Profile> profiles*/) {
+        foreach(Profile _prof in Profile.s_profiles) {
+            _prof.keyConfigMap.Clear();
+            if (_prof.character != null)
+                MonoBehaviour.Destroy(_prof.character);
+        }
+        Profile.s_profiles.Clear();
     }   
     public static void RemoveUnreadyProfiles() {
         for(int i = Profile.s_profiles.Count-1; i >= 0; --i) {
@@ -47,6 +53,7 @@ public class Profile {
                 Profile.s_profiles.RemoveAt(i);
         } 
     }
+
 
     public void KeyConfigInitValues(){
         keyConfigMap[Profile.keyType.JUMP] = KeyCode.Minus;

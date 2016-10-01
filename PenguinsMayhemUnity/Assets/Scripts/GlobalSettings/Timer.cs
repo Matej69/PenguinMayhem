@@ -32,5 +32,8 @@ public class Timer {
     {
         currentTime = _newCurrent;
     }
+    public float GetTimePassed() {
+        return startTime - currentTime;
+    }
 
 }

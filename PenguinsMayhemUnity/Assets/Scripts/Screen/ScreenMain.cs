@@ -25,5 +25,8 @@ public class ScreenMain : Screen {
 
     public override void DestroyPassableResources() {       
     }
+    public override void UpdateScreen()
+    {
+    }
 
 }

@@ -38,6 +38,9 @@ public class CharacterAttributes : MonoBehaviour {
         Vector2 bloodScale = bloodObj.transform.localScale;
         bloodObj.transform.localScale = new Vector2((bloodDir) * Mathf.Abs(bloodScale.x), bloodScale.y);
 
+        //remove object from list and destroy it
+        GameObject thisObj = gameObject;
+        ((ScreenGame)Screen.screen).RemoveCharacterFromList(ref thisObj);
         Destroy(gameObject);
     }
 

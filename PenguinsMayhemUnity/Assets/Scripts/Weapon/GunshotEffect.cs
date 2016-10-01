@@ -59,12 +59,12 @@ public class GunshotEffect : MonoBehaviour {
                     sprites = Resources.LoadAll<Sprite>(FilePaths.spriteShotEffect + "Ak47ShotEffect");
                 }break; 
         }
+        if (sprites == null)
+            return;
+
         //sometimes rotate on y axis so fire effect would look diverse
         int yScale = (int)Mathf.Sign(Random.Range(-3, 3));
         transform.localScale = new Vector2(transform.localScale.x, transform.localScale.y * yScale);
-               
-        if (sprites == null)
-            return;
 
         //set to first frame, so  we dont need to wait for effect to appear on frame 1                 
         GetComponent<SpriteRenderer>().sprite = sprites[currSpriteID];        

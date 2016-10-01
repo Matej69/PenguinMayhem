@@ -20,4 +20,7 @@ public class ScreenProfileDesign : Screen {
     public override void DestroyPassableResources()
     {
     }
+    public override void UpdateScreen()
+    {
+    }
 }
