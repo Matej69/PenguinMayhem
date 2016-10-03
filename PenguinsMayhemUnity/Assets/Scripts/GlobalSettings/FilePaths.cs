@@ -12,7 +12,8 @@ public static class FilePaths
     public static string canvasOptions = "GameObjects/Canvas/CanvasOptions";
     public static string canvasEditor = "GameObjects/Canvas/CanvasEditor";
     public static string canvasProfileChoice = "GameObjects/Canvas/CanvasProfileChoice";
-    public static string canvasScore = "GameObjects/Canvas/CanvasGameScrore";
+    public static string canvasScore = "GameObjects/Canvas/CanvasGameScore";
+    public static string canvasWinner = "GameObjects/Canvas/CanvasWinner";
     //sprite folders
     public static string spritePlatform = "Sprite/Platform";
     public static string spriteBackground = "Sprite/Background";
@@ -41,5 +42,8 @@ public static class FilePaths
     public static string platformTempObj = "GameObjects/Platform/platform";
     public static string characterObj = "GameObjects/Entity/Character";
     public static string objWeaponbox = "GameObjects/Weaponbox/weaponbox";
+    public static string objConfettiSpawner = "GameObjects/Confetti/confettiSpawner";
+    //Sounds
+    public static string soundFolder = "Sounds/";
 
 }

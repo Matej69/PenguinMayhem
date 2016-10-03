@@ -159,6 +159,8 @@ public class Bullet : MonoBehaviour {
                 //Destroy character obj, on destruction blood will be Instantiated
                 GameObject explosionObj = (GameObject)Instantiate(explosionPrefab,gameObject.transform.position, Quaternion.identity);
                 explosionObj.GetComponent<Explosion>().SetOwner(ref characterOwner);
+                //play sound
+                SoundManager.soundManagerPointer.PlaySound(WeaponInfo.weaponType.GRENADE);
                 //destroy bullet
                 Destroy(gameObject);
             }

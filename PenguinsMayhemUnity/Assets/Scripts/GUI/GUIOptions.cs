@@ -42,7 +42,7 @@ public class GUIOptions : MonoBehaviour {
         _volumeSlider.onValueChanged.AddListener(
             delegate {
                 Slider local_volumeSlider = volumeMaster.GetComponent<Slider>();
-                SoundManager.SetVolume(local_volumeSlider.value);
+                SoundOptionsGlobal.SetVolume(local_volumeSlider.value);
             });
     }
     //************************************************************************

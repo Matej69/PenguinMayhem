@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class Weapon : MonoBehaviour {
 
     GameObject ownerCharacter;
+    SoundManager soundManagerScript;
 
     [HideInInspector]
     public GameObject bulletSpawn;
@@ -23,6 +24,10 @@ public class Weapon : MonoBehaviour {
     void Start () {
         ownerCharacter = transform.parent.gameObject;
         weaponSpriteR = GetComponent<SpriteRenderer>();
+        // ************************************************ CANT ACCESS SOUND_MANAGER FROM WEAPONS **********************************************************
+            // soundManagerScript = transform.Find("SoundManager").gameObject.GetComponent<SoundManager>();
+            
+        // ************************************************ CANT ACCESS SOUND_MANAGER FROM WEAPONS **********************************************************
         bulletSpawn = transform.FindChild("BulletSpawn").gameObject;
 
         //set initial weapon
@@ -87,7 +92,9 @@ public class Weapon : MonoBehaviour {
         GameObject shotEff = (GameObject)Instantiate(shotEffectPrefab, bulletSpawn.transform.position, Quaternion.identity);
         shotEff.GetComponent<GunshotEffect>().SetProperAnimation(weaponInfo);
         shotEff.GetComponent<GunshotEffect>().SetScaleXDir((int)Mathf.Sign(ownerCharacter.transform.localScale.x));
-
+        //play sound
+        if (weaponInfo.type != WeaponInfo.weaponType.GRENADE)
+            SoundManager.soundManagerPointer.PlaySound(weaponInfo.type);
         //if it is grenade, hide weapon sprite since it is throwable item
         if (weaponInfo.type == WeaponInfo.weaponType.GRENADE)
             weaponSpriteR.sprite = null;

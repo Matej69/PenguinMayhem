@@ -46,7 +46,9 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\Blood.cs" />
-     <Compile Include="Assets\Scripts\CharacterScripts\CharacterController.cs" />
+     <Compile Include="Assets\Scripts\CharacterScripts\CharacterAttributes.cs" />
+     <Compile Include="Assets\Scripts\Confetti\Confetti.cs" />
+     <Compile Include="Assets\Scripts\Confetti\confettiSpawn.cs" />
      <Compile Include="Assets\Scripts\GUI\CanvasGameScore.cs" />
      <Compile Include="Assets\Scripts\GUI\GUIEditor.cs" />
      <Compile Include="Assets\Scripts\GUI\GUIGameEnd.cs" />
@@ -57,7 +59,7 @@
      <Compile Include="Assets\Scripts\GlobalSettings\CameraScript.cs" />
      <Compile Include="Assets\Scripts\GlobalSettings\FilePaths.cs" />
      <Compile Include="Assets\Scripts\GlobalSettings\ResourceReader.cs" />
-     <Compile Include="Assets\Scripts\GlobalSettings\SoundManager.cs" />
+     <Compile Include="Assets\Scripts\GlobalSettings\SoundOptionsGlobal.cs" />
      <Compile Include="Assets\Scripts\GlobalSettings\Timer.cs" />
      <Compile Include="Assets\Scripts\GlobalSettings\VideoManager.cs" />
      <Compile Include="Assets\Scripts\Input\InputManager.cs" />
@@ -65,7 +67,7 @@
      <Compile Include="Assets\Scripts\MapScripts\EntityInfo.cs" />
      <Compile Include="Assets\Scripts\MapScripts\LevelMap.cs" />
      <Compile Include="Assets\Scripts\MapScripts\MapEditor.cs" />
-     <Compile Include="Assets\Scripts\Profile\CharacterAttributes.cs" />
+     <Compile Include="Assets\Scripts\Profile\CharacterController.cs" />
      <Compile Include="Assets\Scripts\Profile\Profile.cs" />
      <Compile Include="Assets\Scripts\Profile\ProfileDesign.cs" />
      <Compile Include="Assets\Scripts\Screen\Screen.cs" />
@@ -80,6 +82,7 @@
      <Compile Include="Assets\Scripts\Weapon\Weapon.cs" />
      <Compile Include="Assets\Scripts\Weapon\WeaponInfo.cs" />
      <Compile Include="Assets\Scripts\Weaponbox.cs" />
+     <Compile Include="Assets\SoundManager.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

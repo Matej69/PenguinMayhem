@@ -7,6 +7,8 @@ public class CameraScript : MonoBehaviour {
     float camFollowSpeed = 2;
 
     static float startZoomValue;
+    public static Vector3 camPos;
+    public static Vector2 camWorldSize;
 
     struct CharDistanceCord{
         public float minX, minY, maxX, maxY;
@@ -20,14 +22,22 @@ public class CameraScript : MonoBehaviour {
     CharDistanceCord charDistCords;
 
 
+    void Awake() {
+        camPos = transform.position;
+        startZoomValue = Camera.main.orthographicSize;        
+        camWorldSize = new Vector2((2f * Camera.main.orthographicSize) * Camera.main.aspect, 2f * Camera.main.orthographicSize);
+    }
     // Use this for initialization
     void Start () {
-        startZoomValue = Camera.main.orthographicSize;
+        
     }
 	
 	// Update is called once per frame
 	void Update () {
-        if(Screen.screen.screenType == Screen.ScreenType.GAME && ((ScreenGame)(Screen.screen)).Characters.Count != 0)
+        camPos = transform.position;
+        camWorldSize = new Vector2((2f * Camera.main.orthographicSize) * Camera.main.aspect, 2f * Camera.main.orthographicSize);
+
+        if (Screen.screen.screenType == Screen.ScreenType.GAME && ((ScreenGame)(Screen.screen)).Characters.Count != 0)
         {
             SetDynamicCamPos();
         }
