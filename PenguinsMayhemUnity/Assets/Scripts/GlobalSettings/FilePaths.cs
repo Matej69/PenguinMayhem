@@ -25,7 +25,8 @@ public static class FilePaths
     public static string spriteBulletAnim = "Sprite/BulletAnim/";
     public static string spriteBlood= "Sprite/Blood/";
     public static string spriteExplosion = "Sprite/Explosion/";
-
+    public static string spriteBackgroundBack = "Sprite/BackgroundBack/";
+    //sprite actual sprites
     public static string spriteNohat = "Sprite/Hats/nohat";
     public static string spriteCam = "Sprite/Items/cam";
     public static string spritePlayerSpawn = "Sprite/Items/player_spawn";
@@ -43,6 +44,7 @@ public static class FilePaths
     public static string characterObj = "GameObjects/Entity/Character";
     public static string objWeaponbox = "GameObjects/Weaponbox/weaponbox";
     public static string objConfettiSpawner = "GameObjects/Confetti/confettiSpawner";
+    public static string objBackgroundBack = "GameObjects/BackgroundBack/BackgroundObject";
     //Sounds
     public static string soundFolder = "Sounds/";
 

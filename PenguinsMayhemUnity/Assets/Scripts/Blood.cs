@@ -3,14 +3,21 @@ using System.Collections;
 
 public class Blood : MonoBehaviour {
 
+    SoundManager soundManagScript;
+
     Sprite[] sprites;
     int currFrameID = 0;
     Timer spriteFrameTimer;
+
+    void Awake(){
+        soundManagScript = GameObject.Find("SoundManager").gameObject.GetComponent<SoundManager>();
+    }
 
 	// Use this for initialization
 	void Start () {
         spriteFrameTimer = new Timer(0.05f);
         SetAnimation();
+        soundManagScript.PlaySplash();
 
     }
 	

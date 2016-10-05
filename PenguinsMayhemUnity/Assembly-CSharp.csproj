@@ -45,6 +45,9 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\BackgroundBack.cs" />
+     <Compile Include="Assets\BackgroundMovable.cs" />
+     <Compile Include="Assets\FreeAudioClip.cs" />
      <Compile Include="Assets\Scripts\Blood.cs" />
      <Compile Include="Assets\Scripts\CharacterScripts\CharacterAttributes.cs" />
      <Compile Include="Assets\Scripts\Confetti\Confetti.cs" />

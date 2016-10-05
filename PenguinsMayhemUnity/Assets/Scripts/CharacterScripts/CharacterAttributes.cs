@@ -22,6 +22,8 @@ public class CharacterAttributes : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        if (!IsCharacterInBounds())
+            DestroyObject(1);
     }
     
 
@@ -42,6 +44,22 @@ public class CharacterAttributes : MonoBehaviour {
         GameObject thisObj = gameObject;
         ((ScreenGame)Screen.screen).RemoveCharacterFromList(ref thisObj);
         Destroy(gameObject);
+    }
+
+    bool IsCharacterInBounds() {
+        if (GameObject.Find("BackgroundObject(Clone)") == null)
+            return false;
+        SpriteRenderer bckgrndSpriteRend = GameObject.Find("BackgroundObject(Clone)").GetComponent<SpriteRenderer>();
+
+        Bounds backgroundBound = bckgrndSpriteRend.bounds;
+        Vector2 pos = transform.position;
+
+        if (pos.x < backgroundBound.max.x &&
+            pos.x > backgroundBound.min.x &&
+            pos.y > backgroundBound.min.y &&
+            pos.y < backgroundBound.max.y )
+            return true;
+        return false;
     }
 
 }

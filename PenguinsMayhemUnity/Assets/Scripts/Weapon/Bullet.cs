@@ -4,6 +4,8 @@ using System.Collections.Generic;
 
 public class Bullet : MonoBehaviour {
 
+    SoundManager soundManagerScript;
+
     public static List<GameObject> bulletsOnScreen = new List<GameObject>();       //refrence when we need to destroy all bullets
 
     Timer maxTimeAliveTimer;
@@ -34,6 +36,7 @@ public class Bullet : MonoBehaviour {
     void Start()
     {
         weaponType = characterOwner.transform.FindChild("Gun").GetComponent<Weapon>().weaponInfo.type;
+        soundManagerScript = GameObject.Find("SoundManager").GetComponent<SoundManager>();
 
         bulletsOnScreen.Add(gameObject);
 
@@ -160,7 +163,7 @@ public class Bullet : MonoBehaviour {
                 GameObject explosionObj = (GameObject)Instantiate(explosionPrefab,gameObject.transform.position, Quaternion.identity);
                 explosionObj.GetComponent<Explosion>().SetOwner(ref characterOwner);
                 //play sound
-                SoundManager.soundManagerPointer.PlaySound(WeaponInfo.weaponType.GRENADE);
+                soundManagerScript.PlaySound(WeaponInfo.weaponType.GRENADE);
                 //destroy bullet
                 Destroy(gameObject);
             }

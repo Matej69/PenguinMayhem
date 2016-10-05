@@ -11,19 +11,19 @@ public class ScreenEditor : Screen
     public int cellSize = 32;
 
     private GameObject toolsMenu;
-    public GameObject mapEditor;
+    public GameObject mapEditor;   
 
     //::::::::::::::::::::::::::::::::
     //SCREEN_MAIN PROPERTIES::::::::::  
     //::::::::::::::::::::::::::::::::
-        
+
 
     public ScreenEditor()
     {        
         screenType = ScreenType.EDITOR;
         toolsMenu = MonoBehaviour.Instantiate(Resources.Load(FilePaths.canvasEditor), new Vector2(0, 0), Quaternion.identity) as GameObject;
         mapEditor = MonoBehaviour.Instantiate(Resources.Load(FilePaths.mapEditor), new Vector2(0, 0), Quaternion.identity) as GameObject;
-
+                
         Profile.s_profiles.Add(new Profile());
     }
 

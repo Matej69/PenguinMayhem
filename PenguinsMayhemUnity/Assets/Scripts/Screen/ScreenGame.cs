@@ -12,6 +12,8 @@ public class ScreenGame : Screen {
     public bool didGameEnd = false;
     public bool didRoundEnd = false;
 
+    GameObject backgroundObject;
+
     Timer nextGameTimer;
     Timer gameWinnerTimer;
     Timer weaponSpawnTimer;
@@ -67,7 +69,7 @@ public class ScreenGame : Screen {
                 CameraScript.ZoomIn(3);
             }
             //if score canvas is not created(not null), destroy level and create it
-            if (!IsScoreCanvasOnScreen() && nextGameTimer.GetTimePassed() > 2) {
+            if (!IsScoreCanvasOnScreen() && nextGameTimer.GetTimePassed() >= 2) {
                 DestroyLevel();
                 CreateScoreCanvas();
             }
@@ -89,6 +91,7 @@ public class ScreenGame : Screen {
                 CreateAndInitWinnerCanvas();
             }
             if (gameWinnerTimer.IsFinished()) {
+                DestroyBackground();
                 MonoBehaviour.Destroy(winnerCanvasObj);
                 confettiSpawner.GetComponent<confettiSpawn>().DestroySpawner();
                 CameraScript.ResetZoom();
@@ -145,6 +148,9 @@ public class ScreenGame : Screen {
         //spawn map with already intantiated gameObjects
         levelMap = MapParser.GetRandomMap();
         ExtractSpecificFromAllGO();
+        //*************************************** SPAWN BACKGROUND OBJECT ******************************************
+        DestroyBackground();
+        backgroundObject = (GameObject)MonoBehaviour.Instantiate(Resources.Load<GameObject>(FilePaths.objBackgroundBack),new Vector3(CameraScript.camPos.x, CameraScript.camPos.y,10),Quaternion.identity);
         //chose where characters will spawn
         InitCharacters();
         SetCharactersPosition();
@@ -169,6 +175,11 @@ public class ScreenGame : Screen {
             if (objToRemove == Characters[i])
                 Characters.Remove(objToRemove);
         }
+    }
+    //destory background
+    void DestroyBackground() {
+        if (backgroundObject != null)
+            backgroundObject.GetComponent<BackgroundBack>().DestroyAllBackgroundObject();
     }
 
     //************************SORT ALL OBJECT IN SOME CATEGORIES**************************

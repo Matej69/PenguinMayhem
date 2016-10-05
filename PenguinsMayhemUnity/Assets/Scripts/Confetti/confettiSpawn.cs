@@ -33,7 +33,7 @@ public class confettiSpawn : MonoBehaviour {
         float min = CameraScript.camPos.x - CameraScript.camWorldSize.x / 2;
         float max = CameraScript.camPos.x + CameraScript.camWorldSize.x / 2;
         float randX = Random.Range(min, max);
-        return new Vector3(randX, CameraScript.camPos.y + CameraScript.camWorldSize.y/2, 10);
+        return new Vector3(randX, CameraScript.camPos.y + CameraScript.camWorldSize.y/2, -5);
     }   
 
     //*** DESTROY FUNCTIONS ***
