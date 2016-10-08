@@ -13,7 +13,7 @@ public abstract class Screen {
     }
 
     public static void ChangeTo(ScreenType _type)
-    {        
+    {  
         switch (_type)
         {           
             case ScreenType.MAIN:
@@ -32,7 +32,11 @@ public abstract class Screen {
                 break;
             case ScreenType.CHARACTER_CHOICE:
                 {
+                    Screen screenHolder = Screen.screen;                    
                     Screen.screen = new ScreenProfileDesign();
+                    if (screenHolder.screenType == Screen.ScreenType.MAIN){
+                        ((ScreenMain)screenHolder).DestroyNonPassableResources();                        
+                    }
                 }
                 break;
             case ScreenType.GAME:

@@ -91,8 +91,7 @@ public class CameraScript : MonoBehaviour {
         SpriteRenderer bckgrndSpriteRend = GameObject.Find("BackgroundObject(Clone)").GetComponent<SpriteRenderer>();
         
         Bounds backgroundBound = bckgrndSpriteRend.bounds;
-
-        Debug.Log("targetX ="+ _targetPos.x + " halfCamW = "+ camWorldSize.x / 2+" backBoundXMin"+ backgroundBound.min.x);
+        
         if (_targetPos.x - camWorldSize.x / 2 > backgroundBound.min.x &&
             _targetPos.x + camWorldSize.x / 2 < backgroundBound.max.x &&
             _targetPos.y - camWorldSize.y / 2 > backgroundBound.min.y &&
@@ -100,41 +99,7 @@ public class CameraScript : MonoBehaviour {
             return true;
             }
         return false;
-    }    
-    
-    /*    
-    bool UpdateCamIfOutOfBounds(ref Vector3 _targetPos){
-        if (GameObject.Find("BackgroundMovablePrefab(Clone)") == null)
-            return false;
-        SpriteRenderer bckgrndSpriteRend = GameObject.Find("BackgroundMovablePrefab(Clone)").GetComponent<SpriteRenderer>();
-
-        bool returnState = false;
-        Bounds backgroundBound = bckgrndSpriteRend.bounds;
-        //x 
-        float skin = 0.01f;
-        if (camPos.x + camWorldSize.x / 2 > backgroundBound.max.x) { 
-            _targetPos.x = backgroundBound.max.x - camWorldSize.x / 2 - skin;
-            returnState = true;
-        }
-        else
-        if (camPos.x - camWorldSize.x / 2 < backgroundBound.min.x) { 
-            _targetPos.x = backgroundBound.min.x + camWorldSize.x / 2 + skin;
-            returnState = true;
-        }
-        //y
-        if (camPos.y + camWorldSize.y / 2 > backgroundBound.max.y) { 
-            _targetPos.y = backgroundBound.max.y - camWorldSize.y / 2 + skin;
-            returnState = true;
-        }
-        else
-        if (camPos.y - camWorldSize.y / 2 < backgroundBound.min.y) { 
-            _targetPos.y = backgroundBound.min.y + camWorldSize.y / 2 - skin;
-            returnState = true;
-        }        
-
-        return returnState;
-    }
-    */
+    }       
 
     //zooming functions
     static public void ZoomIn(float endZoomValue){

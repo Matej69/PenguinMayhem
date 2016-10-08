@@ -20,6 +20,7 @@ public class ScreenMain : Screen {
     
 
     public override void DestroyNonPassableResources() {
+        mainMenu.GetComponent<GUIMenu>().DestroyGUI();
         MonoBehaviour.Destroy(mainMenu);
     }
 

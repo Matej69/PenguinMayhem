@@ -18,6 +18,7 @@ public class GUIOptions : MonoBehaviour {
 
         Slider volumeSlider = volumeMaster.GetComponent<Slider>();
         InitVolumeValues(ref volumeSlider);
+        SetVolumeSliderListener(ref volumeSlider);
 
         Dropdown displayDropdown = display.GetComponent<Dropdown>();
         InitResolutionValues(ref displayDropdown);
@@ -37,12 +38,16 @@ public class GUIOptions : MonoBehaviour {
     //************************************************************************
     //VOLUME SLIDER FUNCTIONS*************************************************
     //************************************************************************
-    void InitVolumeValues(ref Slider _volumeSlider)
+    void InitVolumeValues(ref Slider _volumeSlider) {
+        _volumeSlider.value = SoundOptionsGlobal.masterVolume;       
+    }
+    void SetVolumeSliderListener(ref Slider _volumeSlider)
     {
         _volumeSlider.onValueChanged.AddListener(
             delegate {
                 Slider local_volumeSlider = volumeMaster.GetComponent<Slider>();
                 SoundOptionsGlobal.SetVolume(local_volumeSlider.value);
+                Debug.Log(SoundOptionsGlobal.masterVolume);
             });
     }
     //************************************************************************

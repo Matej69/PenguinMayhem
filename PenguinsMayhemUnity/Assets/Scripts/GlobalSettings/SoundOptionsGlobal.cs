@@ -23,10 +23,12 @@ public class SoundInfo
     public static Dictionary<WeaponInfo.weaponType, SoundInfo> allSoundInfos = new Dictionary<WeaponInfo.weaponType,SoundInfo>();
     public static SoundInfo backgroundSoundInfo;
     public static SoundInfo bloodSoundInfo;
+    public static SoundInfo cheersInfo;
     static SoundInfo()
-    {
+    {        
         backgroundSoundInfo = new SoundInfo("theme", 0.5f);
         bloodSoundInfo = new SoundInfo("splash", 0.9f);
+        cheersInfo = new SoundInfo("cheering", 0.5f);
         allSoundInfos[WeaponInfo.weaponType.REVOLVER]        =   new SoundInfo("Revolver", 1);
         allSoundInfos[WeaponInfo.weaponType.AK47]            =   new SoundInfo("ak47", 0.75f);
         allSoundInfos[WeaponInfo.weaponType.SPACEPISTOL]     =   new SoundInfo("SpaceGun", 1);

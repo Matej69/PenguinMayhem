@@ -13,6 +13,7 @@ public class ScreenGame : Screen {
     public bool didRoundEnd = false;
 
     GameObject backgroundObject;
+    SoundManager soundManagerScript;
 
     Timer nextGameTimer;
     Timer gameWinnerTimer;
@@ -39,6 +40,7 @@ public class ScreenGame : Screen {
         roundsLeft = _numOfRounds;
         didGameEnd = false;
 
+        soundManagerScript = GameObject.Find("SoundManager").GetComponent<SoundManager>();
         nextGameTimer = new Timer(5);
         gameWinnerTimer = new Timer(5);
         weaponSpawnTimer = new Timer(1);
@@ -88,6 +90,7 @@ public class ScreenGame : Screen {
         else if (didGameEnd && IsThereAWinner()) {
             gameWinnerTimer.Tick(Time.deltaTime);
             if (!IsWinnerCanvasOnScreen()) {
+                soundManagerScript.PlayCheering();
                 CreateAndInitWinnerCanvas();
             }
             if (gameWinnerTimer.IsFinished()) {
@@ -215,7 +218,6 @@ public class ScreenGame : Screen {
         foreach (GameObject player in Characters) {
             int rand = Random.Range(0, playerSpawns.Count);
             for (int i = 0; i < playerSpawns.Count; ++i) {
-                Debug.Log("workzzz");
                 if (rand == i)
                     player.transform.position = playerSpawns[i].transform.position;
             }
@@ -247,7 +249,7 @@ public class ScreenGame : Screen {
         DestroyAndClearList(ref Characters);
         DestroyAndClearList(ref weaponBoxes);
 
-        roundsLeft--;
+        roundsLeft = (--roundsLeft < 0) ? 0 : roundsLeft;
     }
 
     //**** information about round ****

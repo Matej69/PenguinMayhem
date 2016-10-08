@@ -37,7 +37,11 @@ public class GUIMenu : MonoBehaviour {
     }
 
     void startListener(ref Button _startBtn) {
-        //go to next screen
+        _startBtn.onClick.AddListener(
+            delegate
+            {
+                Screen.ChangeTo(Screen.ScreenType.CHARACTER_CHOICE);
+            });
     }
     void optionsClickListener(ref Button _closeMenu) {
         _closeMenu.onClick.AddListener(
@@ -62,6 +66,17 @@ public class GUIMenu : MonoBehaviour {
             {
                 Screen.ChangeTo(Screen.ScreenType.EDITOR);
             });
+    }
+
+    //DESTROY ALL GUI OBJECTS
+    public void DestroyGUI(){
+        Debug.Log("sss");
+        Destroy(start);
+        Destroy(options);
+        Destroy(exit);
+        Destroy(closeMenu);
+        Destroy(editor);
+        Destroy(gameObject);
     }
 
 }

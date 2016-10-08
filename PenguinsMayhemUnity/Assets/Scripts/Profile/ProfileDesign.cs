@@ -21,6 +21,8 @@ public class ProfileDesign : MonoBehaviour {
     public GameObject buttonKeyPickup;
     public GameObject buttonReady;      //ready button
 
+    public Sprite buttonReadySprite, buttonNotReadySprite;
+
     private Dictionary<Profile.keyType, GameObject> buttonKeyTypes = new Dictionary<Profile.keyType, GameObject>();
     private GameObject configButtonPointer = null;
     private bool isConfiguring = false; 
@@ -103,11 +105,13 @@ public class ProfileDesign : MonoBehaviour {
                    profile.SetNameFromInput(InputName);                   
                    profile.isProfileReady = true;
                    profile.hatSprite = Hat.GetComponent<Image>().sprite;
-                   button.image.color = new Color(0.1f, 1, 0.35f);
+                   //button.image.color = new Color(0.1f, 1, 0.35f);
+                   button.image.sprite = buttonReadySprite;
                }
                else{                   
                    profile.isProfileReady = false;
-                   button.image.color = new Color(1, 1, 1);
+                   //button.image.color = new Color(1, 1, 1);
+                   button.image.sprite = buttonNotReadySprite;
                }
            });
 
