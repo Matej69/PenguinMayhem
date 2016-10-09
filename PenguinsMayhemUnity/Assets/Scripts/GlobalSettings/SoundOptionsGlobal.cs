@@ -26,7 +26,7 @@ public class SoundInfo
     public static SoundInfo cheersInfo;
     static SoundInfo()
     {        
-        backgroundSoundInfo = new SoundInfo("theme", 0.5f);
+        backgroundSoundInfo = new SoundInfo("theme", 0.1f);
         bloodSoundInfo = new SoundInfo("splash", 0.9f);
         cheersInfo = new SoundInfo("cheering", 0.5f);
         allSoundInfos[WeaponInfo.weaponType.REVOLVER]        =   new SoundInfo("Revolver", 1);

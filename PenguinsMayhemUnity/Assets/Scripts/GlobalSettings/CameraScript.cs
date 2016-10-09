@@ -37,14 +37,7 @@ public class CameraScript : MonoBehaviour {
         camPos = transform.position;
         camWorldSize = new Vector2((2f * Camera.main.orthographicSize) * Camera.main.aspect, 2f * Camera.main.orthographicSize);
 
-        if (Screen.screen.screenType == Screen.ScreenType.GAME && ((ScreenGame)(Screen.screen)).Characters.Count > 0)
-        {
-            SetDynamicCamPos();
-        }
-        else if (Screen.screen.screenType != Screen.ScreenType.EDITOR)
-        {
-            gameObject.transform.position = Vector3.Lerp(gameObject.transform.position, new Vector3(0,0,-10), Time.deltaTime);
-        }
+        UpdateCamPos();
 
     }
 
@@ -62,12 +55,8 @@ public class CameraScript : MonoBehaviour {
                 charDistCords.maxX = obj.transform.position.x;
         }
     }
-    //**************** READ THIS DESC [=] IMPORTANT STUFF *****************
-    //dynamic camera positioning will be applied only if timer is ready
-    //timer will be reseted every time our camera hit one of collision bounds
-    //reason for that is that if camera is our of bounds and we stoped it and position in bounds again, we do not want to check for dynaimc cam positioning right away
-    //becouse camera will be jerking between being positioned in bound when out and being positioned acording to characterGO
-    //**************** THANKS FOR READING DUDE, NOW GO AWAY ************************* 
+
+    //take character positions, find farthes ones and get edges from them, draw imaginary  rect around and place cam in middle
     void SetDynamicCamPos()
     {
         SetBoundsFromCharPos();
@@ -83,6 +72,17 @@ public class CameraScript : MonoBehaviour {
             transform.position = finalPos;
         }
         
+    }
+
+    //update cam pos -> choose is it dinamic or 
+    void UpdateCamPos()
+    {
+        if (Screen.screen.screenType == Screen.ScreenType.GAME && ((ScreenGame)(Screen.screen)).Characters.Count > 0) {
+            SetDynamicCamPos();
+        }
+        else if (Screen.screen.screenType != Screen.ScreenType.GAME && Screen.screen.screenType != Screen.ScreenType.EDITOR) {
+            gameObject.transform.position = Vector3.Lerp(gameObject.transform.position, new Vector3(0, 0, -10), Time.deltaTime);
+        }
     }
     
     bool WillTargetCamPosMakeCamInBounds(Vector3 _targetPos) {
