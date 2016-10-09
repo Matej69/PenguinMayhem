@@ -8,8 +8,8 @@ public class ScreenManager : MonoBehaviour {
 
 
     void Start () {
-        Screen.screen = new ScreenEditor();
-        //Screen.screen = new ScreenProfileDesign();
+        //Screen.screen = new ScreenEditor();
+       Screen.screen = new ScreenProfileDesign();
     }
 
     void Update () {

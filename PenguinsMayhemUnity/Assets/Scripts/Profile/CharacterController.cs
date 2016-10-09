@@ -25,7 +25,7 @@ public class CharacterController : MonoBehaviour {
         public float startingJumpForce;
         public float jumpForce;
         public bool isJumping;
-        public JumpingInfo(bool a) { jumpDec = 1; jumpForce = 4.7f; startingJumpForce = 4.7f; isJumping = false; }
+        public JumpingInfo(bool a) { jumpDec = 1; jumpForce = 4.8f; startingJumpForce = 4.8f; isJumping = false; }
         public float getCurrentJumpForce() { return (jumpForce = (jumpForce > 0 && jumpForce <= startingJumpForce) ? jumpForce - jumpDec : 0); }
         public void ResetJump() { jumpForce = startingJumpForce; isJumping = false; }
     }

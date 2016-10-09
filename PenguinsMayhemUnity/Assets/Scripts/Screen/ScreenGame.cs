@@ -151,14 +151,15 @@ public class ScreenGame : Screen {
         //spawn map with already intantiated gameObjects
         levelMap = MapParser.GetRandomMap();
         ExtractSpecificFromAllGO();
+        //set camera position
+        SetCameraPosition();
         //*************************************** SPAWN BACKGROUND OBJECT ******************************************
         DestroyBackground();
-        backgroundObject = (GameObject)MonoBehaviour.Instantiate(Resources.Load<GameObject>(FilePaths.objBackgroundBack),new Vector3(CameraScript.camPos.x, CameraScript.camPos.y,10),Quaternion.identity);
+        backgroundObject = (GameObject)MonoBehaviour.Instantiate(Resources.Load<GameObject>(FilePaths.objBackgroundBack),new Vector3(CameraScript.camPos.x, CameraScript.camPos.y,10),Quaternion.identity);        
         //chose where characters will spawn
         InitCharacters();
         SetCharactersPosition();
-        //set camera position
-        SetCameraPosition();
+        
     }
 
     //Instantiate all character objects
@@ -200,12 +201,15 @@ public class ScreenGame : Screen {
             else if (ResourceReader.itemSpriteMap.ContainsKey(objSprite))
             {
                 if (objSprite.name == "cam") {
+                    obj.GetComponent<SpriteRenderer>().enabled = false;
                     camera = obj;
                 }
                 else if (objSprite.name == "player_spawn") {
+                    obj.GetComponent<SpriteRenderer>().enabled = false;                  
                     playerSpawns.Add(obj);
                 }
                 else if (objSprite.name == "weapon_spawn") {
+                    obj.GetComponent<SpriteRenderer>().enabled = false;
                     weaponSpawns.Add(obj);
                 }
 
@@ -228,6 +232,7 @@ public class ScreenGame : Screen {
         if (camera != null)
         {
             Camera.main.transform.position = camera.transform.position;
+            CameraScript.camPos = camera.transform.position;
             Debug.Log("FROM" + Camera.main.transform.position + " TO" + camera.transform.position);
         }
     }

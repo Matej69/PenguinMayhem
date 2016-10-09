@@ -30,6 +30,7 @@ public class LevelMap {
         }
     }
 
+    
     public static void ClearMapObjects(ref LevelMap _map) {        
         if (_map == null || _map.mapObjects.Count <= 0)
             return;           
@@ -39,16 +40,14 @@ public class LevelMap {
         }
     }
 
-    public static void ClearAllExcept(ref LevelMap _map, ref List<LevelMap> _allMaps)
+    public static void ClearAllMaps(ref List<LevelMap> _allMaps)
     {
-        for(int i = _allMaps.Count - 1; i >= 0; --i) {
-            if(_map != _allMaps[i]) {
-                for (int j = _allMaps[i].mapObjects.Count - 1; j >= 0; --j) {
+        for (int i = _allMaps.Count - 1; i >= 0; --i)  {
+                for (int j = _allMaps[i].mapObjects.Count - 1; j >= 0; --j)   {
                     MonoBehaviour.Destroy(_allMaps[i].mapObjects[j]);
-                    _allMaps[i].mapObjects.RemoveAt(j);                   
+                    _allMaps[i].mapObjects.RemoveAt(j);
                 }
                 _allMaps.RemoveAt(i);
-            }
         }
     }
 

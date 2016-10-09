@@ -116,7 +116,7 @@ public class GUIEditor : MonoBehaviour {
                 allMaps.Add(mapEditor.map);
                 MapParser.SaveLevelMapsToJSON(allMaps);
                 //destroy allMaps except active one because they dont need to be on screen(bad solution but works)
-                LevelMap.ClearAllExcept(ref mapEditor.map, ref allMaps);
+                LevelMap.ClearAllMaps(ref allMaps);
                 //refresh dropdown to display saved map  
                 InitMapChoiceItems();
 
