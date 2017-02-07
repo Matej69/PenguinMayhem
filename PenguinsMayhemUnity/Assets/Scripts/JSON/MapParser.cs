@@ -6,21 +6,14 @@ using System;
 using LitJson;
 using System.Globalization;
 
-public static class MapParser {   
-        //fileJsonData = JsonMapper.ToJson(map);   
-        //Debug.Log(fileJsonData["maps"][0]["tiles"].Count);
-
-        //fileJsonData = JsonMapper.ToJson(map);
-       // Debug.Log(fileJsonData);
-       // File.WriteAllText(FilePaths.jsonMaps, fileJsonData.ToString());
-        
-
+public static class MapParser {
+       
     public static List<LevelMap> GetAllLevelMapsFromJSON()
     {
-        List<LevelMap> levelMaps = new List<LevelMap>();
+        List<LevelMap> levelMaps = new List<LevelMap>();        
         string fileTextString = File.ReadAllText(FilePaths.jsonMaps);
         JsonData jsonData = JsonMapper.ToObject(fileTextString);
-
+       
         List<string> mapNames = MapParser.GetMapNamesFromJSON();
         for(int n = 0; n < mapNames.Count; ++n) {
             levelMaps.Add(MapParser.GetLevelMapFromJSON(mapNames[n]));
@@ -29,7 +22,7 @@ public static class MapParser {
     }
    
    public static LevelMap GetLevelMapFromJSON(string mapName)
-    {
+    {        
         LevelMap map = new LevelMap();
         string fileTextString = File.ReadAllText(FilePaths.jsonMaps);
         JsonData jsonData = JsonMapper.ToObject(fileTextString);
@@ -59,21 +52,22 @@ public static class MapParser {
 
     public static LevelMap GetRandomMap()
     {        
-        List<string> names = MapParser.GetMapNamesFromJSON();
-        int randNum = UnityEngine.Random.Range(0, names.Count);
-        LevelMap map = MapParser.GetLevelMapFromJSON(names[randNum]);
+        List<string> names = MapParser.GetMapNamesFromJSON();       
+        int randNum = UnityEngine.Random.Range(0, names.Count);                
+        LevelMap map = MapParser.GetLevelMapFromJSON(names[randNum]);        
         return map;
     }
-
+        
     public static List<string> GetMapNamesFromJSON()
     {
         List<string> mapNames = new List<string>();
 
-        string fileTextString = File.ReadAllText(FilePaths.jsonMaps);
-        JsonData jsonData = JsonMapper.ToObject(fileTextString);
-        for(int i = 0; i < jsonData["maps"].Count; ++i) {
+        string fileTextString = File.ReadAllText(FilePaths.jsonMaps);   //SOME ERRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRROR IS HERE!!!!!!
+
+        JsonData jsonData = JsonMapper.ToObject(fileTextString);        
+        for (int i = 0; i < jsonData["maps"].Count; ++i) {
             mapNames.Add(jsonData["maps"][i]["name"].ToString());
-        }
+        }       
         return mapNames;
     }
     

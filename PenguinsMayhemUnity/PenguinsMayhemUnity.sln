@@ -1,7 +1,7 @@
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2008
-
-Project("{B5AE61FA-F485-030E-099D-370419A25564}") = "PenguinsMayhemUnity", "Assembly-CSharp.csproj", "{0C95BFC1-1DE3-547F-7C10-6D77468F51DA}"
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2015
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PenguinsMayhemUnity", "PenguinsMayhemUnity.csproj", "{D9D31CBC-6EF9-03D9-495E-2943ABF7F015}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,32 +9,12 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{0C95BFC1-1DE3-547F-7C10-6D77468F51DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0C95BFC1-1DE3-547F-7C10-6D77468F51DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0C95BFC1-1DE3-547F-7C10-6D77468F51DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0C95BFC1-1DE3-547F-7C10-6D77468F51DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D9D31CBC-6EF9-03D9-495E-2943ABF7F015}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9D31CBC-6EF9-03D9-495E-2943ABF7F015}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9D31CBC-6EF9-03D9-495E-2943ABF7F015}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9D31CBC-6EF9-03D9-495E-2943ABF7F015}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																					GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = Assembly-CSharp.csproj
-		Policies = $0
-		$0.TextStylePolicy = $1
-		$1.inheritsSet = null
-		$1.scope = text/x-csharp
-		$0.CSharpFormattingPolicy = $2
-		$2.inheritsSet = Mono
-		$2.inheritsScope = text/x-csharp
-		$2.scope = text/x-csharp
-		$0.TextStylePolicy = $3
-		$3.FileWidth = 120
-		$3.TabWidth = 4
-		$3.IndentWidth = 4
-		$3.EolMarker = Unix
-		$3.inheritsSet = Mono
-		$3.inheritsScope = text/plain
-		$3.scope = text/plain
-	EndGlobalSection
-
 EndGlobal

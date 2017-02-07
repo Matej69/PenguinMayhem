@@ -1,9 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 
-[InitializeOnLoad]
 public static class ResourceReader {
 
     private static int spriteID = 0;    
@@ -12,28 +10,21 @@ public static class ResourceReader {
     public static Dictionary<Sprite, int> platformSpriteMap = GetSpritesFromFolder(FilePaths.spritePlatform);
     public static Dictionary<Sprite, int> backgroundSpriteMap = GetSpritesFromFolder(FilePaths.spriteBackground);
     public static Dictionary<Sprite, int> itemSpriteMap = GetSpritesFromFolder(FilePaths.spriteItem);    
+    
 
-    /*
-    public static GameObject[] GetGameObjects(string _path)
-    {
-        GameObject[] objects = Resources.LoadAll<GameObject>(_path);
-        Debug.Log(objects.Length);
-        return objects;
-    }
-*/
     public static Dictionary<Sprite, int> GetSpritesFromFolder(string _path)
     {
-        Dictionary<Sprite, int> spriteMap = new Dictionary<Sprite, int>();
+        Dictionary<Sprite, int> spriteMap = new Dictionary<Sprite, int>();        
         Sprite[] sprites = Resources.LoadAll<Sprite>(_path);
-
-         
         foreach (Sprite _sprite in sprites)
         {
             spriteMap[_sprite] = spriteID;
             spriteID++;
         }
         dictionarySpriteIDList.Add(spriteMap);
+        
         return spriteMap;
+        
     }
 
     //*******************************************************

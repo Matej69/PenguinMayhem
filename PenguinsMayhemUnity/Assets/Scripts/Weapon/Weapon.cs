@@ -37,12 +37,13 @@ public class Weapon : MonoBehaviour {
         shotTimer.Tick(Time.deltaTime);
 
         //changing weapon for testing purposes?*?*?*?*?*?*?*?
+        /*
         if (InputManager.keyPressed[KeyCode.Alpha1]) {
             WeaponInfo.weaponType type = ++weaponInfo.type;
             if (type >= WeaponInfo.weaponType.SIZE) type = 0;
             SwitchToWeapon(type);            
         }
-        //changing weapon for testing purposes?*?*?*?*?*?*?*?
+        */
     }
 
 

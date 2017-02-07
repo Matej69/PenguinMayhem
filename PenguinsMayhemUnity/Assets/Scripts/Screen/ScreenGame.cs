@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
+//using UnityEditor;
 using UnityEngine.UI;
 
-[InitializeOnLoad]
+//[InitializeOnLoad]
 public class ScreenGame : Screen {
 
     public int numOfRounds;
@@ -39,12 +39,13 @@ public class ScreenGame : Screen {
         numOfRounds = _numOfRounds;
         roundsLeft = _numOfRounds;
         didGameEnd = false;
-
+                
         soundManagerScript = GameObject.Find("SoundManager").GetComponent<SoundManager>();
         nextGameTimer = new Timer(5);
         gameWinnerTimer = new Timer(5);
-        weaponSpawnTimer = new Timer(1);
-        InitNewGame();
+        weaponSpawnTimer = new Timer(2f);
+        
+        InitNewGame();       
     }
 
 
@@ -55,7 +56,7 @@ public class ScreenGame : Screen {
     {
     }
     public override void UpdateScreen()
-    {
+    {        
 
         weaponSpawnTimer.Tick(Time.deltaTime);
         if (weaponSpawnTimer.IsFinished()) {
@@ -107,7 +108,7 @@ public class ScreenGame : Screen {
             InitNewGame();
             didGameEnd = false;
         }
-
+        
     }
 
 
@@ -146,10 +147,9 @@ public class ScreenGame : Screen {
     void InitNewGame()
     {
         CameraScript.ResetZoom();
-        nextGameTimer.Reset();
-
+        nextGameTimer.Reset();       
         //spawn map with already intantiated gameObjects
-        levelMap = MapParser.GetRandomMap();
+        levelMap = MapParser.GetRandomMap();        
         ExtractSpecificFromAllGO();
         //set camera position
         SetCameraPosition();
@@ -233,7 +233,6 @@ public class ScreenGame : Screen {
         {
             Camera.main.transform.position = camera.transform.position;
             CameraScript.camPos = camera.transform.position;
-            Debug.Log("FROM" + Camera.main.transform.position + " TO" + camera.transform.position);
         }
     }
 

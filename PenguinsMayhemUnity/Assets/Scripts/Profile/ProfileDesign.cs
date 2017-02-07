@@ -18,7 +18,6 @@ public class ProfileDesign : MonoBehaviour {
     public GameObject buttonKeyRight;
     public GameObject buttonKeyJump;
     public GameObject buttonKeyShot;
-    public GameObject buttonKeyPickup;
     public GameObject buttonReady;      //ready button
 
     public Sprite buttonReadySprite, buttonNotReadySprite;
@@ -80,7 +79,6 @@ public class ProfileDesign : MonoBehaviour {
         buttonKeyTypes[Profile.keyType.RIGHT] = buttonKeyRight;
         buttonKeyTypes[Profile.keyType.JUMP] = buttonKeyJump;
         buttonKeyTypes[Profile.keyType.SHOT] = buttonKeyShot;
-        buttonKeyTypes[Profile.keyType.PICKUP] = buttonKeyPickup;
 
         foreach(KeyValuePair<Profile.keyType,GameObject> pair in buttonKeyTypes) {
             Button button = pair.Value.GetComponent<Button>();

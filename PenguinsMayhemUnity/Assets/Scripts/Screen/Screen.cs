@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.IO;
 
 //needs to be MonoBehaviour so we can attach GameObject to Screen instances
 public abstract class Screen {
@@ -40,16 +41,19 @@ public abstract class Screen {
                 }
                 break;
             case ScreenType.GAME:
-                {
+                {                    
                     Screen screenToDestroyHolder = Screen.screen;
+
                     //if switching to game screen from profileDesign screen
-                    if (Screen.screen.screenType == Screen.ScreenType.CHARACTER_CHOICE){
+                    if (Screen.screen.screenType == Screen.ScreenType.CHARACTER_CHOICE){                       
                         Profile.RemoveUnreadyProfiles();
-                        int numOfRounds = ((ScreenProfileDesign)(Screen.screen)).profileChoiceCanvas.transform.FindChild("GameSettings").GetComponent<GameSettings>().GetNumOfRoundsFromInput();                        
+                        int numOfRounds = ((ScreenProfileDesign)(Screen.screen)).profileChoiceCanvas.transform.FindChild("GameSettings").GetComponent<GameSettings>().GetNumOfRoundsFromInput();
+                        
                         Screen.screen = new ScreenGame(numOfRounds);
                     }
-                    screenToDestroyHolder.DestroyNonPassableResources();
-                    screenToDestroyHolder.DestroyPassableResources();
+                    screenToDestroyHolder.DestroyNonPassableResources();                    
+                    screenToDestroyHolder.DestroyPassableResources();                    
+                    //Application.Quit();
                 }
                 break;
 

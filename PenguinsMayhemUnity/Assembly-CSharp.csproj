@@ -48,6 +48,7 @@
      <Compile Include="Assets\BackgroundBack.cs" />
      <Compile Include="Assets\BackgroundMovable.cs" />
      <Compile Include="Assets\FreeAudioClip.cs" />
+     <Compile Include="Assets\ResourcesLoadManager.cs" />
      <Compile Include="Assets\Scripts\Blood.cs" />
      <Compile Include="Assets\Scripts\CharacterScripts\CharacterAttributes.cs" />
      <Compile Include="Assets\Scripts\Confetti\Confetti.cs" />
@@ -86,11 +87,17 @@
      <Compile Include="Assets\Scripts\Weapon\WeaponInfo.cs" />
      <Compile Include="Assets\Scripts\Weaponbox.cs" />
      <Compile Include="Assets\SoundManager.cs" />
+ <Reference Include="UnityEngine.Advertisements">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Advertisements/UnityEngine.Advertisements.dll</HintPath>
+ </Reference>
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Networking">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.Analytics">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
  </Reference>
  <Reference Include="LitJson">
  <HintPath>E:/ProgramingProjects/PenguinsMayhem/PenguinsMayhemUnity/Assets/Resources/JSON/LitJson.dll</HintPath>

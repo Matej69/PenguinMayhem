@@ -7,7 +7,6 @@ public class GUIMenu : MonoBehaviour {
     private GameObject start;
     private GameObject options;
     private GameObject exit;
-    private GameObject closeMenu;
     private GameObject editor;
 
     // Use this for initialization
@@ -15,7 +14,6 @@ public class GUIMenu : MonoBehaviour {
         start    =   gameObject.transform.FindChild("Start").gameObject;
         options   =   gameObject.transform.FindChild("Options").gameObject;
         exit      =   gameObject.transform.FindChild("Exit").gameObject;
-        closeMenu = transform.FindChild("CloseMenu").gameObject;
         editor = transform.FindChild("Editor").gameObject;
 
         Button startButton = start.GetComponent<Button>();
@@ -27,9 +25,6 @@ public class GUIMenu : MonoBehaviour {
         Button exitButton = exit.GetComponent<Button>();
         exitListener(ref exitButton);
 
-        Button closeMenuButton = closeMenu.GetComponent<Button>();
-        closeMenuListener(ref closeMenuButton);
-
         Button editorButton = editor.GetComponent<Button>();
         editorListener(ref editorButton);
 
@@ -38,8 +33,7 @@ public class GUIMenu : MonoBehaviour {
 
     void startListener(ref Button _startBtn) {
         _startBtn.onClick.AddListener(
-            delegate
-            {
+            delegate {
                 Screen.ChangeTo(Screen.ScreenType.CHARACTER_CHOICE);
             });
     }
@@ -70,11 +64,9 @@ public class GUIMenu : MonoBehaviour {
 
     //DESTROY ALL GUI OBJECTS
     public void DestroyGUI(){
-        Debug.Log("sss");
         Destroy(start);
         Destroy(options);
         Destroy(exit);
-        Destroy(closeMenu);
         Destroy(editor);
         Destroy(gameObject);
     }

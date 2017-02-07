@@ -7,7 +7,7 @@ public class Profile {
 
     public static List<Profile> s_profiles = new List<Profile>();
     
-    public enum keyType { LEFT,RIGHT,JUMP,SHOT,PICKUP };
+    public enum keyType { LEFT,RIGHT,JUMP,SHOT };
     public Dictionary<keyType, KeyCode> keyConfigMap = new Dictionary<keyType, KeyCode>();
 
     public string name;
@@ -58,7 +58,6 @@ public class Profile {
     public void KeyConfigInitValues(){
         keyConfigMap[Profile.keyType.JUMP] = KeyCode.Minus;
         keyConfigMap[Profile.keyType.LEFT] = KeyCode.Minus;
-        keyConfigMap[Profile.keyType.PICKUP] = KeyCode.Minus;
         keyConfigMap[Profile.keyType.RIGHT] = KeyCode.Minus;
         keyConfigMap[Profile.keyType.SHOT] = KeyCode.Minus;
     }

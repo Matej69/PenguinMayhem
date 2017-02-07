@@ -22,8 +22,10 @@ public class CharacterAttributes : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (!IsCharacterInBounds())
+        if (!IsCharacterInBounds()) {             
+            profilePointer.score--;
             DestroyObject(1);
+        }
     }
     
 

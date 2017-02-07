@@ -9,12 +9,14 @@ public class ScreenManager : MonoBehaviour {
 
     void Start () {
         //Screen.screen = new ScreenEditor();
-        Screen.screen = new ScreenProfileDesign();
-        //Screen.screen = new ScreenMain();
+        //Screen.screen = new ScreenProfileDesign();
+        Screen.screen = new ScreenMain();
     }
 
     void Update () {
         Screen.screen.UpdateScreen();
+        if (Input.GetKeyDown(KeyCode.Escape))
+            Application.Quit();
     }
     
 

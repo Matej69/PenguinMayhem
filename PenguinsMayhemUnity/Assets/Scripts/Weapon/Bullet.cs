@@ -83,7 +83,7 @@ public class Bullet : MonoBehaviour {
         float randSpeedY = (float)Random.Range(-10, 20) / 10;
         switch (wType)
         {
-            case WeaponInfo.weaponType.REVOLVER: { SetValues(4, 0, 0); fp_Movement = HorMovement; } break;
+            case WeaponInfo.weaponType.REVOLVER: { SetValues(8, 0, 0); fp_Movement = HorMovement; } break;
             case WeaponInfo.weaponType.AK47: { SetValues(12, 0, 0); fp_Movement = HorMovement; } break;
             //case WeaponInfo.weaponType.GRANADE:{    SetValues(4, 8, 1);     fp_Movement = CosMovement;      }break;
             case WeaponInfo.weaponType.SHOTGUN: { SetValues(10, randSpeedY, 0); fp_Movement = ShotGunMovement; } break;

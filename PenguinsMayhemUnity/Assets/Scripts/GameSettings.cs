@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine.UI;
 
 public class GameSettings : MonoBehaviour {
-
+    
     public GameObject InputNumOfRounds;
     public GameObject buttonStartGame;
 
@@ -14,6 +14,8 @@ public class GameSettings : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        
+            
 	
 	}
 
@@ -21,8 +23,8 @@ public class GameSettings : MonoBehaviour {
     {
         Button button = buttonStartGame.GetComponent<Button>();
         button.onClick.AddListener(
-            delegate {
-                Screen.ChangeTo(Screen.ScreenType.GAME);
+            delegate {                
+                Screen.ChangeTo(Screen.ScreenType.GAME);                
             });
     }
 

@@ -19,7 +19,7 @@ public static class FilePaths
     public static string spriteBackground = "Sprite/Background";
     public static string spriteItem = "Sprite/Items";
     public static string spriteHat = "Sprite/Hats";
-    public static string spriteWeapon = "Sprite/Weapons/";
+    public static string spriteWeapon = "Sprite/Weaponss/";
     public static string spriteBullet = "Sprite/Bullets/";
     public static string spriteShotEffect = "Sprite/ShotEffectAnim/";
     public static string spriteBulletAnim = "Sprite/BulletAnim/";
@@ -37,8 +37,9 @@ public static class FilePaths
     public static string spriteFilenameWeaponSpawn = "weapon_spawn";
     //mapEditor
     public static string mapEditor = "GameObjects/HelpObjects/MapEditor";
-    //JSON maps file
+    //JSON maps file(******IF IN EDITOR = USE dataPath, IF IT IS RELEASED = USE 'maps.json') 
     public static string jsonMaps = Application.dataPath + "/Resources" + "/JSON" + "/maps.json";
+    //public static string jsonMaps = "maps.json";
     //objects
     public static string platformTempObj = "GameObjects/Platform/platform";
     public static string characterObj = "GameObjects/Entity/Character";
